@@ -2,6 +2,7 @@
 exclude =
     venv,
     .tox,
+    .env,
     manage.py,
     migrations,
     config/settings/*

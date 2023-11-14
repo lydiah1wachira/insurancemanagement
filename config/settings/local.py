@@ -1,11 +1,14 @@
 """Project local settings."""
 from config.settings.base import *  # noqa: F403, F401
 from config.settings.utils import get_bool_env
+import os
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = get_bool_env("DEBUG")
 
 ALLOWED_HOSTS = ["*"]
+
+SECRET_KEY = get_env_variable("SECRET_KEY")
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -13,7 +16,7 @@ ALLOWED_HOSTS = ["*"]
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": str(os.path.join(BASE_DIR, "db.sqlite3")),
     }
 }
 

@@ -5,7 +5,7 @@ from django.utils import timezone
 
 
 @pytest.mark.django_db
-def test_create_question():
+def test_create_question(customer):
     # Create a Question instance with the created Customer
     question = Question.objects.create(
         customer=customer,
