@@ -3,9 +3,10 @@ from django.contrib.auth.models import User
 from insurance.models import Customer
 
 
+
 @pytest.fixture
-def user():
-    # Create a user instance
+def customer():
+    '''create a customer fixture'''
     user = User.objects.create(
         username="john doe",
         first_name="John",
@@ -13,14 +14,6 @@ def user():
         email="johndoe@gmail.com",
         password="password",
     )
-    user.set_password("password")
-    user.save()
-    return user
-
-
-@pytest.fixture
-def customer():
-    '''create a customer fixture'''
     customer = Customer.objects.create(
         user=user,
         profile_pic=None,
