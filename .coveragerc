@@ -1,0 +1,5 @@
+[run]
+source = config
+omit =
+    */migrations/*
+    

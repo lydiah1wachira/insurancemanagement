@@ -23,9 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
-
-
+SECRET_KEY = get_env_variable("SECRET_KEY")
 
 
 # Application definition
@@ -40,7 +38,6 @@ INSTALLED_APPS = [
     # Project apps
     "customer",
     "insurance",
-    
 ]
 
 MIDDLEWARE = [
@@ -116,6 +113,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Login settings
 # https://docs.djangoproject.com/en/4.2/topics/auth/default/#module-django.contrib.auth.views
 
-LOGIN_REDIRECT_URL='/afterlogin'
+LOGIN_REDIRECT_URL = "/afterlogin"
 LOGIN_URL = "/accounts/login/"
 LOGOUT_REDIRECT_URL = "/accounts/login/"

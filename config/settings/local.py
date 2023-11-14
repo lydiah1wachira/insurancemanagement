@@ -8,8 +8,6 @@ DEBUG = get_bool_env("DEBUG")
 
 ALLOWED_HOSTS = ["*"]
 
-SECRET_KEY = get_env_variable("SECRET_KEY")
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 

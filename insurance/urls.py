@@ -1,11 +1,11 @@
 from django.urls import path
-from insurance.views import views
+from insurance.views import *
 from django.contrib.auth.views import LogoutView, LoginView
-from .views import category_views, base_views, customer_views, policy_views, questions_views
+from .views import category_views, base_views, customer_views, policy_views, questions_views,dashboard
 
 
 urlpatterns = [
-    path("", views.home_view, name=""),
+    path("", dashboard.home_view, name=""),
     path(
         "logout",
         LogoutView.as_view(template_name="insurance/logout.html"),
@@ -13,13 +13,13 @@ urlpatterns = [
     ),
     path("aboutus", base_views.aboutus_view),
     path("contactus", base_views.contactus_view),
-    path("afterlogin", views.afterlogin_view, name="afterlogin"),
+    path("afterlogin", dashboard.afterlogin_view, name="afterlogin"),
     path(
         "adminlogin",
         LoginView.as_view(template_name="insurance/adminlogin.html"),
         name="adminlogin",
     ),
-    path("admin-dashboard", views.admin_dashboard_view, name="admin-dashboard"),
+    path("admin-dashboard", dashboard.admin_dashboard_view, name="admin-dashboard"),
     path(
         "admin-view-customer",
         customer_views.admin_view_customer_view,
