@@ -1,5 +1,4 @@
 from datetime import date, timedelta
-
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -27,7 +26,7 @@ def adminclick_view(request):
 
     if request.user.is_authenticated:
         return HttpResponseRedirect("afterlogin")
-    
+
     return HttpResponseRedirect("adminlogin")
 
 
@@ -36,7 +35,7 @@ def admin_view_customer_view(request):
     """view function to display all customers to the admin"""
 
     customers = CMODEL.Customer.objects.all()
-    
+
     return render(
         request, "insurance/admin_view_customer.html", {"customers": customers}
     )
@@ -69,11 +68,11 @@ def update_customer_view(request, pk):
 
 @login_required(login_url="adminlogin")
 def delete_customer_view(request, pk):
-    '''view function to handle a customer deletion'''
-    
+    """view function to handle a customer deletion"""
+
     customer = CMODEL.Customer.objects.get(id=pk)
     user = User.objects.get(id=customer.user_id)
     user.delete()
     customer.delete()
-    
+
     return HttpResponseRedirect("/admin-view-customer")

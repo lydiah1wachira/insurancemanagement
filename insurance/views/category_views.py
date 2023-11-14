@@ -6,6 +6,7 @@ from ..models import Category
 
 
 def admin_category_view(request):
+    '''Displays the category page'''
     return render(request, "insurance/admin_category.html")
 
 
@@ -31,10 +32,12 @@ def admin_view_category_view(request):
 
 
 def admin_delete_category_view(request):
+    '''Display the delete category option'''
     categories = models.Category.objects.all()
     return render(
         request, "insurance/admin_delete_category.html", {"categories": categories}
     )
+
 
 def delete_category_view(request, pk):
     """Delete category view."""
@@ -44,10 +47,12 @@ def delete_category_view(request, pk):
 
 
 def admin_update_category_view(request):
+    '''view to display the update category option'''
     categories = models.Category.objects.all()
     return render(
         request, "insurance/admin_update_category.html", {"categories": categories}
     )
+
 
 @login_required(login_url="adminlogin")
 def update_category_view(request, pk):

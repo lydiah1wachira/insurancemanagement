@@ -13,16 +13,19 @@ from customer import models as CMODEL
 from customer import forms as CFORM
 
 def home_view(request):
+    '''View to display User home page'''
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')  
     return render(request,'insurance/index.html')
 
 
 def is_customer(user):
+    '''View to check if customer exists'''
     return user.groups.filter(name='CUSTOMER').exists()
 
 
 def afterlogin_view(request):
+    '''View to redirect customer to dashboars after login'''
     if is_customer(request.user):      
         return redirect('customer/customer-dashboard')
     else:
@@ -31,6 +34,7 @@ def afterlogin_view(request):
 
 
 def adminclick_view(request):
+    '''View for admin login'''
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
     return HttpResponseRedirect('adminlogin')
