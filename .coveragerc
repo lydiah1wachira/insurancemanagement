@@ -3,4 +3,5 @@ source = config
 omit =
     */migrations/*
     .venv
+    */config/settings/*
     

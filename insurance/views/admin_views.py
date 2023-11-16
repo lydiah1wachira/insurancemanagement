@@ -15,19 +15,32 @@ from .. import forms, models
 from ..models import Category, Customer, Question
 
 
-def is_customer(user):
-    """displays an existing customer"""
-
-    return user.groups.filter(name="CUSTOMER").exists()
-
-
 def adminclick_view(request):
-    """Redirects the admin to the admin home page after login"""
-
     if request.user.is_authenticated:
         return HttpResponseRedirect("afterlogin")
-
     return HttpResponseRedirect("adminlogin")
+
+
+@login_required(login_url="adminlogin")
+def admin_dashboard_view(request):
+    """General dashboard view."""
+    dict = {
+        "total_user": CMODEL.Customer.objects.all().count(),
+        "total_policy": models.Policy.objects.all().count(),
+        "total_category": models.Category.objects.all().count(),
+        "total_question": models.Question.objects.all().count(),
+        "total_policy_holder": models.PolicyRecord.objects.all().count(),
+        "approved_policy_holder": models.PolicyRecord.objects.all()
+        .filter(status="Approved")
+        .count(),
+        "disapproved_policy_holder": models.PolicyRecord.objects.all()
+        .filter(status="Disapproved")
+        .count(),
+        "waiting_policy_holder": models.PolicyRecord.objects.all()
+        .filter(status="Pending")
+        .count(),
+    }
+    return render(request, "insurance/admin_dashboard.html", context=dict)
 
 
 @login_required(login_url="adminlogin")

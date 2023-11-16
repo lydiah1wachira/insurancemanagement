@@ -1,7 +1,7 @@
 from django.urls import path
 from insurance.views import *
 from django.contrib.auth.views import LogoutView, LoginView
-from .views import category_views, base_views, customer_views, policy_views, questions_views,dashboard
+from .views import category_views, base_views, customer_views, policy_views, questions_views,dashboard,admin_views
 
 
 urlpatterns = [
@@ -11,15 +11,15 @@ urlpatterns = [
         LogoutView.as_view(template_name="insurance/logout.html"),
         name="logout",
     ),
-    path("aboutus", base_views.aboutus_view),
-    path("contactus", base_views.contactus_view),
+    path("aboutus", base_views.aboutus_view, name="aboutus_view"),
+    path("contactus", base_views.contactus_view, name="contactus_view"),
     path("afterlogin", dashboard.afterlogin_view, name="afterlogin"),
     path(
         "adminlogin",
         LoginView.as_view(template_name="insurance/adminlogin.html"),
         name="adminlogin",
     ),
-    path("admin-dashboard", dashboard.admin_dashboard_view, name="admin-dashboard"),
+    path("admin-dashboard", admin_views.admin_dashboard_view, name="admin-dashboard"),
     path(
         "admin-view-customer",
         customer_views.admin_view_customer_view,
