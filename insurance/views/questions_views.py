@@ -27,3 +27,4 @@ def update_question_view(request, pk):
     return render(
         request, "insurance/update_question.html", {"questionForm": questionForm}
     )
+

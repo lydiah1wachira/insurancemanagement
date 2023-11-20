@@ -69,3 +69,6 @@ def update_category_view(request, pk):
     return render(
         request, "insurance/update_category.html", {"categoryForm": categoryForm}
     )
+    
+    
+

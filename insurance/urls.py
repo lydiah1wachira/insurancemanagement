@@ -1,7 +1,7 @@
 from django.urls import path
 from insurance.views import *
 from django.contrib.auth.views import LogoutView, LoginView
-from .views import category_views, base_views, customer_views, policy_views, questions_views,dashboard,admin_views
+from .views import category_views, base_views, customer_views, policy_views, questions_views,dashboard, admin_views
 
 
 urlpatterns = [

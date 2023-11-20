@@ -9,7 +9,7 @@ from .. import forms, models
 
 def home_view(request):
     if request.user.is_authenticated:
-        return HttpResponseRedirect("afterlogin")
+        return redirect("afterlogin")
     return render(request, "insurance/index.html")
 
 
@@ -23,6 +23,8 @@ def afterlogin_view(request):
         return redirect("customer/customer-dashboard")
     else:
         return redirect("admin-dashboard")
+    
+
 
 
 

@@ -1,7 +1,10 @@
 [run]
-source = config
 omit =
     */migrations/*
     .venv
-    */config/settings/*
+    config/*
+    manage.py
+    .tox/*
+    */tests.py
+    */tests/*
     

@@ -45,6 +45,7 @@
         <tr>
 
           <th>Name</th>
+
           <th>Profile Picture</th>
           <th>Mobile</th>
           <th>Address</th>
@@ -57,7 +58,11 @@
       <tr>
 
         <td> {{t.get_name}}</td>
-        <td> <img src="{% static t.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+        {% if t.profile_pic %}
+          <td> <img src="{% static t.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+        {% else %}
+           <td> <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/81164306-3d04-48d0-aaff-709455e43bf6/d35iy5c-6415a025-91c2-4e40-9182-650eab8d1d3c.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzgxMTY0MzA2LTNkMDQtNDhkMC1hYWZmLTcwOTQ1NWU0M2JmNlwvZDM1aXk1Yy02NDE1YTAyNS05MWMyLTRlNDAtOTE4Mi02NTBlYWI4ZDFkM2MuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.6jx_cB0baTLkC8tkNN7YBi3k8ySVrLRb6_Z7B-LraMM" alt="Profile Pic" height="40px" width="40px" /></td>
+        {% endif %}
         <td>{{t.mobile}}</td>
         <td>{{t.address}}</td>
         
